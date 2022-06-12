@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'InstaLaravel'),
 
     /*
     |--------------------------------------------------------------------------
@@ -174,6 +174,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\FormatTimeServiceProvider::class,
+        App\Providers\LikedProvider::class,
+        App\Providers\CountLikesProvider::class,
 
     ],
 
@@ -227,6 +230,11 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'FormatTime' => App\Helpers\FormatTime::class,
+        'Liked' => App\Helpers\Liked::class,
+        'CountLikes' => App\Helpers\CountLikes::class,
+
+        
 
     ],
 

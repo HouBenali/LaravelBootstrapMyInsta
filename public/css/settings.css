@@ -1,0 +1,36 @@
+.message{
+    text-align: center;
+    background-color: rgb(67, 182, 147);
+    color: white;
+}
+
+.centered{
+    display: block;
+    position: relative;
+    top:0.65vh;
+}
+
+.card-header{
+    text-align: center;
+    font-size: large;
+}
+
+
+.btn{
+    display: block !important;
+    text-align: center !important;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 5vh;
+    font-size: large !important;
+}
+
+input{
+    width: 20.5vw !important;
+}
+
+.profile{
+    width: 4vw !important;
+    height:4vw !important ;
+}
