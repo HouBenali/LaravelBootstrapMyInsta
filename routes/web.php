@@ -39,10 +39,6 @@ Route::get('/getImage', [App\Http\Controllers\SettingsController::class, 'getIma
 Route::get('/uploadPhoto', [App\Http\Controllers\UploadController::class, 'index'])->name('uploadPhoto')->middleware('auth');
 Route::post('/postPhoto', [App\Http\Controllers\UploadController::class, 'create'])->name('postPhoto')->middleware('auth');
 
-Route::get('/artisan/storage', function() {
-$command = 'storage:link';
-$result = Artisan::call($command);
-return Artisan::output();
-})
+Route::get('/artisan/storage', function() {$command = 'storage:link';$result = Artisan::call($command);return Artisan::output();})->middleware('auth');
 
 Auth::routes();
