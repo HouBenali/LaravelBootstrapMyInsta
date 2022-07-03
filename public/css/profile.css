@@ -1,0 +1,31 @@
+.card-header{
+    text-align: center;
+    font-size: large;
+}
+.btn{
+    background-color: black !important;
+    color: white !important;
+    display: block !important;
+    text-align: center !important;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 5vh;
+    font-size: large !important;
+}
+
+.btn:hover{
+    border: black solid 2px;
+    background-color: white !important;
+    color: black !important;
+}
+
+input{
+    width: 20.5vw !important;
+}
+
+.profile{
+    width: 4vw !important;
+    height:4vw !important ;
+}
+

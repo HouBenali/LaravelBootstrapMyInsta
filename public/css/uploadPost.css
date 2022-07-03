@@ -1,0 +1,33 @@
+input, textarea{
+    width: 20.5vw !important;
+}
+
+.card-header{
+    text-align: center;
+    font-size: large;
+}
+
+
+
+
+.btn{
+    display: block !important;
+    text-align: center !important;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 5vh;
+    font-size: large !important;
+}
+
+.message{
+    text-align: center;
+    background-color: rgb(67, 182, 147);
+    color: white;
+}
+
+.ErrorMessage{
+    text-align: center;
+    background-color:tomato;
+    color: white;
+}
