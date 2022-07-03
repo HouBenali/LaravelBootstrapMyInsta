@@ -48,6 +48,7 @@ class UploadController extends Controller
             'image'   => ['required', 'mimes:jpg,png,jpeg,gif,tiff,svg|max:2048'],
             ]);
 
+      
         $image=$request->file('image');
 
         if ($image){
