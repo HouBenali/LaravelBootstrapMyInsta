@@ -33,13 +33,13 @@
 
                         @if ($liked)
                         <a href="{{ route('dislike', $image_id) }}" class="button">
-                           <img class="like" src="{{ asset('users/liked.png') }}"  />
+                           <img class="like" src="../../resources/images/liked.png"  />
                         </a>
 
                         @else
 
                         <a href="{{ route('like', $image_id) }}" class="button">
-                            <img class="like" src="{{ asset('users/like.png') }}"  />
+                            <img class="like" src="../../resources/images/like.png"  />
                         </a>
                         @endif
                         <span class="likeCount">{{$countLikes}}</span>
