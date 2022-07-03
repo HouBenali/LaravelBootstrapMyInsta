@@ -43,13 +43,13 @@
                     @if( $users->pluck('id')->contains($value->user_id))
                         @if (\Liked::IsLiked($value->id))
                             <a href="{{ route('dislike', $value->id) }}" class="button">
-                            <img class="like" src="{{ asset('users/liked.png') }}"  />
+                            <img class="like" src="../../resources/images/liked.png"  />
                             </a>
 
                             @else
 
                             <a href="{{ route('like', $value->id) }}" class="button">
-                                <img class="like" src="{{ asset('users/like.png') }}"  />
+                                <img class="like" src="../../resources/images/like.png"  />
                             </a>
                             @endif
                             <span class="likeCount">{{\CountLikes::LikesCounter($value->id)}}</span>
