@@ -17,9 +17,9 @@
                 <div class="card-header">
 
                     @if(!$user->photo)
-                        <img  class="avatar" alt="avatar" src="{{ asset('users/null.jpg') }}"/>
+                        <img class="avatar" alt="avatar" src="https://github.com/HouBenali/Assets/blob/main/avatar.png"/>
                     @else
-                        <img  class="avatar" alt="avatar" src="{{ $user->photo }}"/>
+                        <img class="avatar" alt="avatar" src="{{ $user->photo }}"/>
                     @endif
 
                     @if( $user->id == $info->user_id)
@@ -33,13 +33,13 @@
 
                         @if ($liked)
                         <a href="{{ route('dislike', $image_id) }}" class="button">
-                           <img class="like" src={{asset('users/liked.png')}}  />
+                           <img class="like" src="https://github.com/HouBenali/Assets/blob/main/liked.png"  />
                         </a>
 
                         @else
 
                         <a href="{{ route('like', $image_id) }}" class="button">
-                            <img class="like" src={{asset('users/like.png')}}  />
+                            <img class="like" src="https://github.com/HouBenali/Assets/blob/main/like.png"  />
                         </a>
                         @endif
                         <span class="likeCount">{{$countLikes}}</span>

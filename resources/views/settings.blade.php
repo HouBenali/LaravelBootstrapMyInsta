@@ -76,7 +76,7 @@
                         <div class="form-group row">
                             <label for="image" class="col-md-4 col-form-label text-md-right" style="margin-right: 1.5vh;">{{ __('Avatar') }}</label>
                             @if(!$user->photo)
-                                <img  class="profile" alt="avatar" src="{{ asset('users/null.jpg') }}"/>
+                                <img  class="profile" alt="avatar" src="https://github.com/HouBenali/Assets/blob/main/avatar.png"/>
                             @else
                                 <img class="profile" src="{{ $user->photo}}" alt="avatar"/>
                             @endif

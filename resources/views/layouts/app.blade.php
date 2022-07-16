@@ -66,7 +66,7 @@
 
 
                                 @if(is_null($main_user->photo))
-                                <img  class="avatar" alt="avatar" src="{{ asset('users/null.jpg') }}"/>  {{ Auth::user()->name }}
+                                <img  class="avatar" alt="avatar" src="https://github.com/HouBenali/Assets/blob/main/avatar.png"/>  {{ Auth::user()->name }}
                                 @else
                                     <img  class="avatar" alt="avatar" src="{{$main_user->photo }}"/> {{ Auth::user()->name }}
                                 @endif
