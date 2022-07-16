@@ -33,7 +33,7 @@ class SettingsController extends Controller
         $users = User::all();
         $user = User::where('id',$info->id)->first();
         $main_user = User::where('id',$id)->first();
-        
+
         return view('settings',[
             'info' => $info,
             'users' => $users,
@@ -45,8 +45,19 @@ class SettingsController extends Controller
     public function update(Request $request){
         $id =\Auth::user()->id;
         $date = DB::raw('CURRENT_TIMESTAMP');
-       
+
+        $validate = $this->validate($request, [
+            'name' => ['string', 'max:255'],
+            'surname' => ['string', 'max:255'],
+            'nick' => ['string', 'max:255', 'unique:users,nick,'.$id],
+            'email' => ['string', 'email', 'max:255','unique:users,email,'.$id],
+            'image'   => ['required', 'mimes:jpg,png,jpeg,gif,tiff,svg|max:2024'],
+            ]);
+
         $image=$request->file('image');
+        $imageB64 = base64_encode(file_get_contents($image));
+        $imageFileType = $request->file('image')->extension();
+        $photo = 'data:image/'.$imageFileType.';base64,'.$imageB64;
 
         if ($image){
             $path= $image->store('users');
@@ -56,19 +67,12 @@ class SettingsController extends Controller
             $filename=$route[1];
             $user = DB::table('users')->where('id',$id)->update(
                 [
-                    'image' => $filename,
+                    'photo' => $photo,
                     'updated_at' => $date,
                     ]
                 );
         }
 
-        $validate = $this->validate($request, [
-            'name' => ['string', 'max:255'],
-            'surname' => ['string', 'max:255'],
-            'nick' => ['string', 'max:255', 'unique:users,nick,'.$id],
-            'email' => ['string', 'email', 'max:255','unique:users,email,'.$id]
-            ]);
-    
         $usuari = DB::table('users')->where('id',$id)->update(
             [
                 'name' => $request->input('name'),
@@ -81,7 +85,7 @@ class SettingsController extends Controller
 
         return redirect()->route('settings')
                          ->with(['message'=>'Usuari actualitzat correctament']);
-       
+
     }
 
     public function updatePass(Request $request){
@@ -92,7 +96,7 @@ class SettingsController extends Controller
         $validate = $this->validate($request, [
             'password' => ['string', 'min:8', 'confirmed'],
         ]);
-        
+
         $usuari = DB::table('users')->where('id',$id)->update(
             [
             'password' => Hash::make($request['password']),

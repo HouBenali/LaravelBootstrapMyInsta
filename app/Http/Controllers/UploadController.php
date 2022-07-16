@@ -45,11 +45,13 @@ class UploadController extends Controller
 
         $validate = $this->validate($request, [
             'description' => ['string','min:8', 'max:255'],
-            'image'   => ['required', 'mimes:jpg,png,jpeg,gif,tiff,svg|max:2048'],
+            'image'   => ['required', 'mimes:jpg,png,jpeg,gif,tiff,svg|max:2024'],
             ]);
 
-      
         $image=$request->file('image');
+        $imageB64 = base64_encode(file_get_contents($image));
+        $imageFileType = $request->file('image')->extension();
+        $photo = 'data:image/'.$imageFileType.';base64,'.$imageB64;
 
         if ($image){
             $path= $image->store('images');
@@ -59,7 +61,7 @@ class UploadController extends Controller
             $filename=$route[1];
             Image::create([
                 'user_id' => $id,
-                'image_path' => $filename,
+                'photo' => $photo,
                 'description' => $request->input('description'),
                 'updated_at' => $date,
         ]);

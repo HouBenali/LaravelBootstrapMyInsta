@@ -75,10 +75,10 @@
 
                         <div class="form-group row">
                             <label for="image" class="col-md-4 col-form-label text-md-right" style="margin-right: 1.5vh;">{{ __('Avatar') }}</label>
-                            @if(!$user->image)
+                            @if(!$user->photo)
                                 <img  class="profile" alt="avatar" src="{{ asset('users/null.jpg') }}"/>
                             @else
-                                <img class="profile" src="{{ route('avatar')}}" alt="avatar"/>
+                                <img class="profile" src="{{$user->photo}}" alt="avatar"/>
                             @endif
                         </div>
 
@@ -87,5 +87,5 @@
                 </div>
             </div>
             <br>
-        
+
 @endsection

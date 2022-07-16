@@ -16,10 +16,10 @@
 
                 <div class="card-header">
 
-                    @if(!$user->image)
+                    @if(!$user->photo)
                         <img  class="avatar" alt="avatar" src="{{ asset('users/null.jpg') }}"/>
                     @else
-                        <img  class="avatar" alt="avatar" src="{{ asset('users/'. $user->image) }}"/>
+                        <img  class="avatar" alt="avatar" src="{{ $user->photo }}"/>
                     @endif
 
                     @if( $user->id == $info->user_id)
@@ -28,18 +28,18 @@
                         </span>
                     @endif
                 </div>
-                <img class="photo" src="{{ asset('images/'. $info->image_path) }}"></img>
+                <img class="photo" src="{{ $info->photo }}"></img>
                 <div class="card-footer">
 
                         @if ($liked)
                         <a href="{{ route('dislike', $image_id) }}" class="button">
-                           <img class="like" src="../../resources/images/liked.png"  />
+                           <img class="like" src={{asset('users/liked.png')}}  />
                         </a>
 
                         @else
 
                         <a href="{{ route('like', $image_id) }}" class="button">
-                            <img class="like" src="../../resources/images/like.png"  />
+                            <img class="like" src={{asset('users/like.png')}}  />
                         </a>
                         @endif
                         <span class="likeCount">{{$countLikes}}</span>

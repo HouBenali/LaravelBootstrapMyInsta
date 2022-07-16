@@ -32,7 +32,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar 
+                    <!-- Left Side Of Navbar
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
@@ -46,7 +46,7 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-                            
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -61,17 +61,17 @@
                                 <li class="nav-item">
                                     <a class="nav-link centered" href="{{ route('uploadPhoto') }}">{{ __('Upload Photo') }}</a>
                                 </li>
-                                
+
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 
-                                
-                                @if(is_null($main_user->image))
+
+                                @if(is_null($main_user->photo))
                                 <img  class="avatar" alt="avatar" src="{{ asset('users/null.jpg') }}"/>  {{ Auth::user()->name }}
                                 @else
-                                    <img  class="avatar" alt="avatar" src="{{ route('avatar')}}"/> {{ Auth::user()->name }}
+                                    <img  class="avatar" alt="avatar" src="{{$main_user->photo }}"/> {{ Auth::user()->name }}
                                 @endif
-                          
-                  
+
+
                                 </a>
                             <div class="dropdown">
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -82,7 +82,7 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>

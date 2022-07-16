@@ -22,10 +22,10 @@
                 <a class="detall" href="{{ route('detail',$value->id)}}">
                 <div class="card-header">
 
-                    @if(!$users->find($value->user_id)->image)
+                    @if(!$users->find($value->user_id)->photo)
                         <img  class="avatar" alt="avatar" src="{{ asset('users/null.jpg') }}"/>
                     @else
-                        <img  class="avatar" alt="avatar" src="{{ asset('users/'.($users->find($value->user_id)->image)) }}"/>
+                        <img  class="avatar" alt="avatar" src="{{$users->find($value->user_id)->photo }}"/>
                     @endif
                             @if( $users->find($value->user_id)->id==$value->user_id)
                                 <span>
@@ -36,20 +36,20 @@
                             @endif
                 </div>
 
-                    <img class="photo" src="{{ asset('images/'.$value->image_path) }}"></img>
+                    <img class="photo" src={{$value->photo}}></img>
                     <div class="card-footer">
 
 
                     @if( $users->pluck('id')->contains($value->user_id))
                         @if (\Liked::IsLiked($value->id))
                             <a href="{{ route('dislike', $value->id) }}" class="button">
-                            <img class="like" src="../../resources/images/liked.png"  />
+                            <img class="like" src="{{ asset('users/liked.png') }}"  />
                             </a>
 
                             @else
 
                             <a href="{{ route('like', $value->id) }}" class="button">
-                                <img class="like" src="../../resources/images/like.png"  />
+                                <img class="like" src="{{ asset('users/like.png') }}"  />
                             </a>
                             @endif
                             <span class="likeCount">{{\CountLikes::LikesCounter($value->id)}}</span>

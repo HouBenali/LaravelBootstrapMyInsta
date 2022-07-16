@@ -29,7 +29,7 @@ class LikeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function like(Request $request, $image_id){
-        
+
         $logged_user =\Auth::user()->id;
 
         $date = DB::raw('CURRENT_TIMESTAMP');
@@ -47,32 +47,16 @@ class LikeController extends Controller
         $countLikes=$this->countLikes($image_id);
 
         $url= explode('?',url()->previous());
-    
-        if ($url[0] =='http://127.0.0.1:8000/detail/'.$image_id){
-            
+        $num= explode('/detail/',$url[0]);
+        //dd(count($num));
+        if (count($num)==2){
             return redirect()->route('detail',
-            
-            ['id' => $image_id]);
+            ['id' => $num[1]]);
         }
-           
+
         else{
-            if (count($url)>1){
-                $page=explode('=',$url[1]);
-                $page[1];
-                
-                return redirect()->route('home',
-                [ 'page' => $page[1]]
-            );
-            }
-
-            else{
-                return redirect()->route('home');
-
-            }
+            return redirect()->route('home');
         }
-
-        
-       
     }
 
     public function liked($image_id){
@@ -84,7 +68,7 @@ class LikeController extends Controller
             if ($like->user_id == $logged_user && $like->image_id== $image_id){
                 array_push($array, true);
             } else {
-                array_push($array, false); 
+                array_push($array, false);
                 }
         }
         $liked=in_array(true, $array);
@@ -94,7 +78,7 @@ class LikeController extends Controller
         }else{
             return false;
         }
-        
+
     }
 
     public function countLikes($image_id){
@@ -122,39 +106,24 @@ class LikeController extends Controller
         foreach($likes as $like){
             if ($like->user_id == $logged_user && $like->image_id== $image_id){
                 $like_id = $like->id;
-            } 
+            }
         }
-    
+
         $likes=Like::where('id',$like_id)->first();
         $likes->delete();
-        
+
         $countLikes=$this->countLikes($image_id);
 
         $url= explode('?',url()->previous());
+        $num= explode('/detail/',$url[0]);
+        //dd(count($num));
+        if (count($num)==2){
 
-        if ($url[0] =='http://127.0.0.1:8000/detail/'.$image_id){
-            
             return redirect()->route('detail',
-            ['id' => $image_id]);
+            ['id' => $num[1]]);
         }
-           
          else{
-     
-            if (count($url)>1){
-                $page=explode('=',$url[1]);
-                $page[1];
-
-                return redirect()->route('home',
-                [ 'page' => $page[1]]
-            );
-            }
-
-            else{
                 return redirect()->route('home');
-
-            }
-
-            
          }
 
     }
