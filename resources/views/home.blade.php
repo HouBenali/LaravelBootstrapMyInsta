@@ -23,7 +23,7 @@
                 <div class="card-header">
 
                     @if(!$users->find($value->user_id)->photo)
-                        <img  class="avatar" alt="avatar" src="{{ ../resources/images/avatar.png }}"/>
+                        <img  class="avatar" alt="avatar" src="../resources/images/avatar.png"/>
                     @else
                         <img  class="avatar" alt="avatar" src="{{$users->find($value->user_id)->photo }}"/>
                     @endif
