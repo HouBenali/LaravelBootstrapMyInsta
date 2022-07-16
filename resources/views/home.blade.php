@@ -23,7 +23,7 @@
                 <div class="card-header">
 
                     @if(!$users->find($value->user_id)->photo)
-                        <img  class="avatar" alt="avatar" src="https://github.com/HouBenali/Assets/blob/main/avatar.png"/>
+                        <img  class="avatar" alt="avatar" src="https://raw.githubusercontent.com/HouBenali/Assets/main/avatar.png"/>
                     @else
                         <img  class="avatar" alt="avatar" src="{{$users->find($value->user_id)->photo }}"/>
                     @endif
@@ -43,13 +43,13 @@
                     @if( $users->pluck('id')->contains($value->user_id))
                         @if (\Liked::IsLiked($value->id))
                             <a href="{{ route('dislike', $value->id) }}" class="button">
-                            <img class="like" src=" https://github.com/HouBenali/Assets/blob/main/liked.png"  />
+                            <img class="like" src="https://raw.githubusercontent.com/HouBenali/Assets/main/liked.png"  />
                             </a>
 
                             @else
 
                             <a href="{{ route('like', $value->id) }}" class="button">
-                                <img class="like" src="https://github.com/HouBenali/Assets/blob/main/like.png"  />
+                                <img class="like" src="https://raw.githubusercontent.com/HouBenali/Assets/main/like.png"  />
                             </a>
                             @endif
                             <span class="likeCount">{{\CountLikes::LikesCounter($value->id)}}</span>
